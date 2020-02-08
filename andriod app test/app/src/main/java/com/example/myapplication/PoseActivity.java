@@ -15,7 +15,7 @@ public class PoseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pose);
 
-        button_back = (Button) findViewById(R.id.button5);
+        button_back = findViewById(R.id.back_button_pose);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
