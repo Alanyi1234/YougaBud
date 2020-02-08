@@ -45,6 +45,8 @@
                 android:layout_height="193dp"
                 android:layout_marginTop="96dp"
                 android:src="@drawable/yoga_pic_1"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.057"
                 app:layout_constraintStart_toStartOf="parent"
