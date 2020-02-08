@@ -16,15 +16,15 @@ public class GetActiveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.get_active);
 
-        button_pose1 = (Button) findViewById(R.id.button5);
-        HomeButton = findViewById(R.id.HomeButton);
-
+        button_pose1 = findViewById(R.id.pose1);
         button_pose1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openPoseActivity();
             }
         });
+
+        HomeButton = findViewById(R.id.HomeButton);
         HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
