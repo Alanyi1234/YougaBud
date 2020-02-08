@@ -23,6 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.FeedActivity;
 import com.example.myapplication.NewUserActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.login.LoginViewModel;
@@ -84,9 +85,10 @@ public class LoginActivity extends AppCompatActivity {
                     updateUiWithUser(loginResult.getSuccess());
                 }
                 setResult(Activity.RESULT_OK);
+                openFeedActivity();
 
                 //Complete and destroy login activity once successful
-                finish();
+                //finish();
             }
         });
 
@@ -127,10 +129,18 @@ public class LoginActivity extends AppCompatActivity {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
+
+
+
             }
         });
 
 
+    }
+
+    public void openFeedActivity(){
+        Intent intent = new Intent(this, FeedActivity.class);
+        startActivity(intent);
     }
 
     public void openNewUserActivity(){
