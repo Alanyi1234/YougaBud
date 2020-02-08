@@ -5,7 +5,6 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -23,8 +22,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.FeedActivity;
-import com.example.myapplication.NewUserActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.ui.login.LoginViewModel;
 import com.example.myapplication.ui.login.LoginViewModelFactory;
@@ -32,7 +29,6 @@ import com.example.myapplication.ui.login.LoginViewModelFactory;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
-    private Button button_new_user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,17 +39,8 @@ public class LoginActivity extends AppCompatActivity {
 
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
-        final Button loginButton = findViewById(R.id.login2);
+        final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
-
-        button_new_user = findViewById(R.id.button11);
-        button_new_user.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                openNewUserActivity();
-            }
-        });
-
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -85,10 +72,9 @@ public class LoginActivity extends AppCompatActivity {
                     updateUiWithUser(loginResult.getSuccess());
                 }
                 setResult(Activity.RESULT_OK);
-                openFeedActivity();
 
                 //Complete and destroy login activity once successful
-                //finish();
+                finish();
             }
         });
 
@@ -129,24 +115,10 @@ public class LoginActivity extends AppCompatActivity {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
-
-
-
             }
         });
-
-
     }
 
-    public void openFeedActivity(){
-        Intent intent = new Intent(this, FeedActivity.class);
-        startActivity(intent);
-    }
-
-    public void openNewUserActivity(){
-        Intent intent = new Intent(this, NewUserActivity.class);
-        startActivity(intent);
-    }
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
         // TODO : initiate successful logged in experience
