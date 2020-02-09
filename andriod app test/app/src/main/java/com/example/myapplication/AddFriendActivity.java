@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AddFriendActivity extends AppCompatActivity {
     private Button button_back;
+    private Button button_add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,13 @@ public class AddFriendActivity extends AppCompatActivity {
 
         button_back = findViewById(R.id.AddFriendBackButton);
         button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backFeedActivity();
+            }
+        });
+        button_add = findViewById(R.id.button10);
+        button_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 backFeedActivity();
